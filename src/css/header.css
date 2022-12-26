@@ -1,0 +1,26 @@
+nav{
+    padding-block: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+.line{
+    background: linear-gradient(113.55deg, #D7C7F4 30.35%, #F8BDAD 100%);
+    height: 2px;
+}
+.right{
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+.right .wallet{
+    display: flex;
+    align-items: center;
+}
+.right .wallet .wallet__id{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width:10rem;
+    font-size: .875rem;
+    color: #5B5E6E;
+}
