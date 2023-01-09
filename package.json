@@ -3,12 +3,12 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://aptools.io/notifications/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
+  "homepage": "https://aptools.io/notifications/",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
