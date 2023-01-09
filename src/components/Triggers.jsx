@@ -1,27 +1,31 @@
 import React from "react";
 import arrowRight from '../assets/icons/la_angle-down.svg'
+import account from '../assets/account.svg'
+import aptos from '../assets/aptos.svg'
+import wallet from '../assets/wallet.svg'
+import topaz from '../assets/topaz.svg'
 
 export default function TriggerCard() {
   const cards = [
     {
       title: "Account",
       desc: "Track Account Liquidity",
-      img: "src/assets/account.svg",
+      img: account,
     },
     {
       title: "Aptos",
       desc: "Track APT price",
-      img: "src/assets/aptos.svg",
+      img: aptos,
     },
     {
       title: "Wallet",
       desc: "Track new transaction",
-      img: "src/assets/wallet.svg",
+      img: wallet,
     },
     {
       title: "Topaz",
       desc: "Track NFT floor price",
-      img: "src/assets/topaz.svg",
+      img: topaz,
     },
   ];
   return (
