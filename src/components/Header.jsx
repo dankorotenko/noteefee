@@ -1,12 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../assets/logo.svg";
 import wallet from "../assets/icons/la_wallet.svg";
 import bars from "../assets/icons/la_bars.svg";
 import "../css/header.css";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Header() {
+  const [auth, setAuth] = useState("");
+  const location = useLocation();
+  useEffect(() => {
+    setAuth(
+      location.pathname.split("/")[location.pathname.split("/").length - 1] ===
+        "login" ||
+        location.pathname.split("/")[
+          location.pathname.split("/").length - 1
+        ] === "signup"
+        ? "sign"
+        : ""
+    );
+  }, [location]);
+
   return (
-    <header>
+    <header className={`${auth}`}>
       <nav className="container">
         <div className="logo">
           <a href="/">
@@ -23,7 +38,7 @@ export default function Header() {
               Menu <img src={bars} alt="E" />
             </button>
             <div className="dropdown-content">
-              <a href="#">Notify</a>
+              <Link to="/notifications/">Notify</Link>
               <a href="#">Billing</a>
               <a href="#">Settings</a>
             </div>
