@@ -51,6 +51,11 @@ select {
   line-height: inherit;
   color: inherit;
 }
+input, select {
+  border-radius: 0.25rem;
+  background-color: #eef7fd;
+  padding: 0.5rem 1rem;
+}
 
 :root {
   font-size: 16px;
@@ -61,6 +66,7 @@ select {
   font-family: "Poppins";
   color-scheme: light;
   --container-padding: 8.3%;
+  --green-clr: #4DD185;
 }
 
 .container {

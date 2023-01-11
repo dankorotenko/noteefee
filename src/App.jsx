@@ -1,6 +1,6 @@
 import Header from "./components/Header";
 import InfoCard from "./components/InfoCard";
-import "./css/App.css";
+import "./css/App.scss";
 import { BsArrowDown } from "react-icons/bs";
 
 import bolt from "./assets/bolt.svg";
@@ -21,7 +21,7 @@ function App() {
           />
         </section>
 
-        <section className="trigger container">
+        <section className="trigger">
           <h3 className="trigger__title">
             <img src={bolt} /> Trigger
           </h3>
@@ -33,7 +33,7 @@ function App() {
           <BsArrowDown size="2.5em" color="#8C5AE8" />
         </div>
 
-        <section className="action container">
+        <section className="action">
           <h3 className="action__title">
             <img src={bell} /> Action
           </h3>
@@ -41,9 +41,9 @@ function App() {
           <button className="btn bordered">Create Action</button>
         </section>
         <hr />
-        <div className="input-wrapper">
-          <input type="text" className="input-input" placeholder="Name"/>
-          <button className="input-button">Save Notification</button>
+        <div className="submit-wrapper">
+          <input type="text" className="submit-input" placeholder="Name"/>
+          <button className="submit-button">Save Notification</button>
         </div>
       </main>
     </div>
