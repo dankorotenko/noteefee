@@ -15,7 +15,7 @@ export default function Header() {
         location.pathname.split("/")[
           location.pathname.split("/").length - 1
         ] === "signup"
-        ? "sign"
+        ? "log"
         : ""
     );
   }, [location]);
