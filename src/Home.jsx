@@ -4,6 +4,7 @@ import { BsArrowDown } from "react-icons/bs";
 import bolt from "./assets/bolt.svg";
 import bell from "./assets/bell.svg";
 import Triggers from "./components/Triggers";
+import { Link } from "react-router-dom";
 export default function Home() {
   return (
     <main className="main container">
@@ -40,6 +41,7 @@ export default function Home() {
         <input type="text" className="submit-input" placeholder="Name" />
         <button className="submit-button">Save Notification</button>
       </div>
+      <Link to="/notifications/login">Login</Link>
     </main>
   );
 }

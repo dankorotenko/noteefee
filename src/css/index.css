@@ -71,6 +71,7 @@ input:active, input:focus{
   color-scheme: light;
   --container-padding: 8.3%;
   --green-clr: #4DD185;
+  --orange-clr: #FFA300;
 }
 
 .container {
@@ -99,4 +100,9 @@ input:active, input:focus{
 .btn.filled {
   color: #fff;
   background-color: var(--primary-clr);
+}
+@media screen and (width <= 425px){
+  .container{
+    --container-padding: 2.35%;
+  }
 }
