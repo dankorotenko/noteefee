@@ -17,6 +17,9 @@ main {
   background-image: url("/bg.png");
   background-repeat: no-repeat;
   background-position: right top;
+  &.account{
+    background-image: url("/bg-account.png");
+  }
 }
 
 /* info */
@@ -105,7 +108,7 @@ section.info {
     &.open {
       width: 100%;
       animation: opened 1000ms ease;
-      height: calc(200px + 1.5rem);
+      height: calc(100% + 1.5rem);
     }
     &.closed {
       display: none;
@@ -118,7 +121,16 @@ section.info {
     &_title {
       display: flex;
       gap: 0.5rem;
-      align-items: center;
+      justify-content: space-between;
+      h4{
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+    }
+    &_btns{
+      display: flex;
+      gap: 1rem;
     }
     &_body {
       margin-top: 1rem;
@@ -212,4 +224,75 @@ hr {
   background-color: transparent;
   color: #fff;
   cursor: pointer;
+}
+
+/*modal*/
+
+.modal{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 25%;
+  &__inner {
+    background: var(--gray-2-clr);
+    color: var(--text-clr);
+    padding: 2rem;
+    border-radius: .5rem;
+    border: 1px solid var(--orange-clr);
+    width: 100%;
+    &_head{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      svg{
+        transition: background-color 100ms ease-in;
+        &:hover{
+          background-color: #FFF;
+          transition: background-color 100ms ease-in;
+        }
+      }
+    }
+    &_title{
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    &_body{
+      margin-top: 2rem;
+      &__input{
+        padding: .5rem;
+        display: flex;
+        align-items: center;
+        background-color: #eef7fd;
+        border: 1px solid var(--border-clr);
+        border-radius: .25rem;
+        margin-top: 0.5rem;
+      }
+      &__select{
+        display: flex;
+        color: var(--primary-clr);
+        gap: .5rem;
+        padding: 0.5rem;
+        border-right: 1px solid var(--primary-clr);
+      }
+      input{
+        width: 70%;
+      }
+      button{
+        margin-top: 1.5rem;
+      }
+    }
+  }
+
+  .close-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
 }

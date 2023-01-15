@@ -67,6 +67,7 @@ input:active, input:focus{
   --bg-clr: #ffffff;
   --primary-clr: #8c5ae8;
   --border-clr: #a8a8a8;
+  --gray-2-clr: #F5F5F5;
   font-family: "Poppins";
   color-scheme: light;
   --container-padding: 8.3%;

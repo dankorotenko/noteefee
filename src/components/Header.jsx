@@ -39,6 +39,7 @@ export default function Header() {
             </button>
             <div className="dropdown-content">
               <Link to="/notifications/">Notify</Link>
+              <Link to="/notifications/login">Login</Link>
               <a href="#">Billing</a>
               <a href="#">Settings</a>
             </div>

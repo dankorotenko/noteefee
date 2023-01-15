@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import Modal from "./Modal";
 import arrowRight from "../assets/icons/la_angle-down.svg";
 import account from "../assets/account.svg";
 import aptos from "../assets/aptos.svg";
 import wallet from "../assets/wallet.svg";
 import topaz from "../assets/topaz.svg";
 
-export default function TriggerCard() {
+export default function TriggerCard({handleChildProps}) {
   const cards = [
     {
       title: "Account",
@@ -29,9 +30,11 @@ export default function TriggerCard() {
     },
   ];
   const [open, setOpen] = useState(null);
+  const [showModal, setShowModal] = useState(false);
 
   const handleTrigger = (i) => {
     setOpen(i);
+    handleChildProps({trigger: 'account'})
   };
   return (
     <div className="trigger__body">
@@ -43,10 +46,18 @@ export default function TriggerCard() {
           key={i}
           onClick={() => handleTrigger(i)}
         >
-          <h4 className="trigger__card_title">
-            <img src={card.img} alt={card.img} />
-            {card.title}
-          </h4>
+          <div className="trigger__card_title">
+            <h4>
+              <img src={card.img} alt={card.img} />
+              {card.title}
+            </h4>
+            {i === open && (
+              <div className="trigger__card_btns">
+                <button className="btn bordered" onClick={() => setShowModal(true)}>Test</button>
+                <button className="btn filled">Continue</button>
+              </div>
+            )}
+          </div>
           {i === open ? (
             <div className="trigger__card_body opened">
               <div className="field-wrapper user-address">
@@ -65,10 +76,16 @@ export default function TriggerCard() {
                 <div className="inputs-wrapper">
                   <select>
                     <option value="Below">Below</option>
+                    <option value="Below">Above</option>
+                    <option value="Below">Equal</option>
                   </select>
                   <div className="input-wrapper">
-                  <input type="text" placeholder="0.00" id="threshold-amound" />
-                  <p>USD</p>
+                    <input
+                      type="number"
+                      placeholder="0.00"
+                      id="threshold-amound"
+                    />
+                    <p>USD</p>
                   </div>
                 </div>
               </div>
@@ -81,6 +98,7 @@ export default function TriggerCard() {
           )}
         </div>
       ))}
+      {showModal && <Modal showModal={showModal} setShowModal={setShowModal} />}
     </div>
   );
 }

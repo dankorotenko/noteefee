@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import InfoCard from "./components/InfoCard";
 import { BsArrowDown } from "react-icons/bs";
 import bolt from "./assets/bolt.svg";
@@ -6,8 +6,12 @@ import bell from "./assets/bell.svg";
 import Triggers from "./components/Triggers";
 import { Link } from "react-router-dom";
 export default function Home() {
+  const [trigger, setTrigger] = useState(null);
+  const handleChildProps = (childProps) => {
+    setTrigger(childProps);
+  }
   return (
-    <main className="main container">
+    <main className={`main container ${trigger && trigger.trigger}`}>
       <section className="info">
         <InfoCard title="Active Notifications" percent={1} max={3} />
         <InfoCard
@@ -22,7 +26,7 @@ export default function Home() {
           <img src={bolt} /> Trigger
         </h3>
         <p className="trigger__text">When this happens...</p>
-        <Triggers />
+        <Triggers handleChildProps={handleChildProps}/>
       </section>
 
       <div className="arrow">
@@ -41,7 +45,6 @@ export default function Home() {
         <input type="text" className="submit-input" placeholder="Name" />
         <button className="submit-button">Save Notification</button>
       </div>
-      <Link to="/notifications/login">Login</Link>
     </main>
   );
 }
