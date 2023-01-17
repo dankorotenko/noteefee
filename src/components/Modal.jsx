@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { GrClose } from "react-icons/gr";
 import { BsExclamationTriangle, BsChevronDown } from "react-icons/bs";
+import Select from "./Select";
 
 export default function Modal({ showModal, setShowModal }) {
+  const options = ["Block number", "Tx Hash"];
   const [runTest, setRunTest] = useState(false);
   const [openCode, setOpenCode] = useState(false)
   const toggleCode = (e) => {
@@ -34,9 +36,7 @@ export default function Modal({ showModal, setShowModal }) {
             Will use the lastest block when left empty
           </p>
           <div className="modal__inner_body__input">
-            <div className="modal__inner_body__select">
-              Block number <BsChevronDown color="#8c5ae8" />
-            </div>
+            <Select className="modal__inner_body__select" options={options}/>
             <input type="text" placeholder="Test block #001" />
           </div>
           <div className="modal__inner_body__btns">
