@@ -51,12 +51,14 @@ select {
   line-height: inherit;
   color: inherit;
 }
-input, select {
+input,
+select {
   border-radius: 0.25rem;
   background-color: #eef7fd;
   padding: 0.5rem 1rem;
 }
-input:active, input:focus{
+input:active,
+input:focus {
   border: none;
   outline: none;
 }
@@ -67,12 +69,12 @@ input:active, input:focus{
   --bg-clr: #ffffff;
   --primary-clr: #8c5ae8;
   --border-clr: #a8a8a8;
-  --gray-2-clr: #F5F5F5;
+  --gray-2-clr: #f5f5f5;
   font-family: "Poppins";
   color-scheme: light;
   --container-padding: 8.3%;
-  --green-clr: #4DD185;
-  --orange-clr: #FFA300;
+  --green-clr: #4dd185;
+  --orange-clr: #ffa300;
 }
 
 .container {
@@ -102,8 +104,45 @@ input:active, input:focus{
   color: #fff;
   background-color: var(--primary-clr);
 }
-@media screen and (width <= 425px){
-  .container{
+.select {
+  cursor: pointer;
+  position: relative;
+}
+.select .select-outside{
+  display: flex;
+  gap: .5rem;
+}
+.select .select-inside {
+  display: none;
+  flex-flow: column nowrap;
+  gap: .3rem;
+  background-color: var(--primary-clr);
+  position: absolute;
+  bottom: -70px;
+  left: 0;
+  list-style: none;
+  color: var(--bg-clr);
+  padding: .625rem;
+  border-radius: .25rem;
+  border: 1px solid var(--bg-clr);
+  font-size: .875rem;
+}
+.select .select-inside.opened{
+  display: flex;
+}
+.select .select-inside li{
+  cursor: pointer;
+}
+.select .select-inside li.active{
+  font-weight: 600;
+}
+.select .select-inside li.active::after{
+  content: '✓';
+  margin-left: .25rem;
+}
+
+@media screen and (width <= 425px) {
+  .container {
     --container-padding: 2.35%;
   }
 }
