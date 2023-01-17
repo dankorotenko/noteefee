@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
 export default function Select({ className, options }) {
   const [opened, setOpened] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(options[1]);
+  const [selectedOption, setSelectedOption] = useState(options[0]);
 
   const handleOpen = () => {
     opened ? setOpened(false) : setOpened(true);

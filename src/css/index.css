@@ -107,10 +107,14 @@ input:focus {
 .select {
   cursor: pointer;
   position: relative;
+  display: flex;
+  align-items: center;
 }
 .select .select-outside{
   display: flex;
   gap: .5rem;
+  width: 100%;
+  justify-content: space-between;
 }
 .select .select-inside {
   display: none;
@@ -126,6 +130,7 @@ input:focus {
   border-radius: .25rem;
   border: 1px solid var(--bg-clr);
   font-size: .875rem;
+  z-index: 1;
 }
 .select .select-inside.opened{
   display: flex;
