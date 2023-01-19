@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import account from "../assets/account.svg";
 import aptos from "../assets/aptos.svg";
@@ -30,23 +30,36 @@ export default function Triggers({ handleChildProps }) {
       img: topaz,
     },
   ];
-  const handleTrigger = (i) => {
+
+  const handleOpen = (i) => {
     setOpen(i);
     handleChildProps({ trigger: cards[0].title.toLowerCase() });
-    // if(open === i ) setOpen(null)
   };
+
+  const closeCard = () => {
+    setOpen(null);
+    handleChildProps({ trigger: null });
+  };
+
+  useEffect(() => {
+    console.log(open);
+    if (open === null) {
+      handleChildProps({ trigger: null });
+    }
+  }, [open]);
+
   return (
     <div className="trigger__body">
       {cards.map((card, i) => (
-        <div
-          className={`trigger__card ${
-            i === open ? "open" : open != null ? "closed" : ""
-          }`}
-          onClick={() => handleTrigger(i)}
+        <TriggerCard
+          card={card}
           key={i}
-        >
-          <TriggerCard card={card} i={i} open={open} />
-        </div>
+          isOpen={i === open}
+          isHidden={i !== open && open !== null}
+          onClick={() => handleOpen(i)}
+          setOpen={setOpen}
+          onCloseClick={closeCard}
+        />
       ))}
     </div>
   );
