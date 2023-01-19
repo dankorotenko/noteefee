@@ -30,23 +30,22 @@ export default function Triggers({ handleChildProps }) {
       img: topaz,
     },
   ];
-
+  
   const handleOpen = (i) => {
     setOpen(i);
     handleChildProps({ trigger: cards[0].title.toLowerCase() });
   };
 
-  const closeCard = () => {
-    setOpen(null);
-    handleChildProps({ trigger: null });
-  };
-
+  // const closeCard = () => {
+  //   setOpen(null);
+  //   handleChildProps({ trigger: null });
+  // };
+  const handleTriggerProps =(props) => {
+    setOpen(props.closed)
+  }
   useEffect(() => {
-    console.log(open);
-    if (open === null) {
-      handleChildProps({ trigger: null });
-    }
-  }, [open]);
+    // handleTriggerProps()
+  });
 
   return (
     <div className="trigger__body">
@@ -58,7 +57,7 @@ export default function Triggers({ handleChildProps }) {
           isHidden={i !== open && open !== null}
           onClick={() => handleOpen(i)}
           setOpen={setOpen}
-          onCloseClick={closeCard}
+          handleTriggerProps={handleTriggerProps}
         />
       ))}
     </div>

@@ -3,7 +3,7 @@ import arrowRight from "../assets/icons/la_angle-down.svg";
 import Select from "./Select";
 import Modal from "./Modal";
 
-import { GrClose } from "react-icons/gr";
+import { MdClose } from "react-icons/md";
 
 export default function TriggerCard({
   card,
@@ -11,7 +11,7 @@ export default function TriggerCard({
   isHidden,
   onClick,
   setOpen,
-  onCloseClick,
+  handleTriggerProps
 }) {
   const [showModal, setShowModal] = useState(false);
 
@@ -19,8 +19,9 @@ export default function TriggerCard({
   const hiddenClass = isHidden ? "closed" : "";
 
   const closeCard = () => {
-    setOpen(1);
-    handleChildProps({ trigger: null });
+    // setOpen(null);
+    // handleChildProps({ trigger: null });
+    handleTriggerProps({closed: null})
   };
 
   return (
@@ -59,9 +60,9 @@ export default function TriggerCard({
               </div>
             </div>
           </div>
-          <div className="close-button" onClick={onCloseClick}>
-            <GrClose />
-          </div>
+          <button className="btn bordered close-button" onClick={closeCard}>
+            <MdClose color="#8c5ae8"/>
+          </button>
         </div>
       ) : (
         <div className="trigger__card_body">

@@ -202,9 +202,8 @@ section.info {
           position: absolute;
           bottom: 0;
           right: 0;
+          padding: .5rem;
           &:hover{
-            background-color: #f0f0f0;
-            transition: background-color 100ms ease-in;
             cursor: pointer;
           }
         }
@@ -232,7 +231,7 @@ hr {
   background-color: var(--primary-clr);
   border-radius: 1.5rem;
   padding: 0.5rem 2rem;
-  margin-block: 1rem 4rem;
+  margin-block: .5rem 4rem;
   width: 70%;
 }
 .submit-wrapper .submit-input {
