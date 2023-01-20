@@ -8,7 +8,7 @@ import "./css/sign.scss";
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   return (
-    <section className="sign">
+    <section className="sign login">
       <div className="sign__wrapper">
         <img className="logo-img" src={logo} alt={logo} width="370" />
         <div className="underline"></div>

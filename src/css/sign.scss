@@ -23,8 +23,11 @@ header.log {
   background-image: url("/bg-sign.png");
   background-repeat: no-repeat;
   background-position-x: 110%;
-  height: 80vh;
+  height: 100vh;
   display: flex;
+  &.login{
+    background-image: url("/bg-login.png");
+  }
 
   img.logo-img {
     margin-block: 2.5rem;
@@ -172,12 +175,12 @@ header.log {
     }
   }
 }
-@media screen and (width <= 425px) {
+@media screen and (width <= 560px) {
   .sign {
     background-size: 110%;
     background-position-x: 120px;
     &__inner {
-      padding-inline: 2.3%;
+      padding-inline: 8.3%;
     }
     &__title,
     &__desc {
@@ -201,6 +204,14 @@ header.log {
       padding: 1rem;
       font-size: 1rem;
       left: 30%;
+    }
+  }
+}
+
+@media screen and (width <=425px) {
+  .sign{
+    &__inner {
+      padding-inline: 2.3%;
     }
   }
 }

@@ -148,6 +148,6 @@ input:focus {
 
 @media screen and (width <= 425px) {
   .container {
-    --container-padding: 2.35%;
+    --container-padding: 2.3%;
   }
 }
