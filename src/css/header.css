@@ -47,10 +47,16 @@ nav{
     display: none;
     position: absolute;
     background-color: var(--primary-clr);
-    min-width: 110px;
+    width: 100%;
     box-shadow: 0 2px 8px var(--primary-clr);
     z-index: 1;
     border-radius: 0 0 22px 22px;
+  }
+  .dropdown-content .divider{
+    height: 2px;
+    background-color: #FFF;
+    margin: 0;
+    margin-inline: .5rem;
   }
   
   .dropdown-content a {

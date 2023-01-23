@@ -52,6 +52,7 @@ export default function Triggers({ handleChildProps }) {
       {cards.map((card, i) => (
         <TriggerCard
           card={card}
+          open={open}
           key={i}
           isOpen={i === open}
           isHidden={i !== open && open !== null}

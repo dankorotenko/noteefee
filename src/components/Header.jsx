@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import logo from "../assets/logo.svg";
 import wallet from "../assets/icons/la_wallet.svg";
-import bars from "../assets/icons/la_bars.svg";
+import user from "../assets/icons/la_user.svg";
 import "../css/header.css";
 import { Link, useLocation } from "react-router-dom";
 
@@ -35,11 +35,14 @@ export default function Header() {
           </div>
           <div className="dropdown">
             <button className="dropdown-button">
-              Menu <img src={bars} alt="E" />
+              <img src={user} alt="E" />
+              Account
             </button>
             <div className="dropdown-content">
+              <Link to="/notifications/login">Log In</Link>
+              <Link to="/notifications/signup">Sign Up</Link>
+              <hr className="divider"/>
               <Link to="/notifications/">Notify</Link>
-              <Link to="/notifications/login">Login</Link>
               <a href="#">Billing</a>
               <a href="#">Settings</a>
             </div>
