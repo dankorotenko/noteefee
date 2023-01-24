@@ -6,8 +6,11 @@ import wallet from "../assets/wallet.svg";
 import topaz from "../assets/topaz.svg";
 import TriggerCard from "./TriggerCard";
 
+
 export default function Triggers({ handleChildProps }) {
   const [open, setOpen] = useState(null);
+  const [closeCard, setCloseCard] = useState(null);
+
   const cards = [
     {
       title: "Account",
@@ -30,22 +33,19 @@ export default function Triggers({ handleChildProps }) {
       img: topaz,
     },
   ];
-  
+
   const handleOpen = (i) => {
     setOpen(i);
     handleChildProps({ trigger: cards[0].title.toLowerCase() });
   };
+  
+  const handleClose = (i) => {
+    setCloseCard(i);
+  };
 
-  // const closeCard = () => {
-  //   setOpen(null);
-  //   handleChildProps({ trigger: null });
-  // };
-  const handleTriggerProps =(props) => {
-    setOpen(props.closed)
-  }
   useEffect(() => {
-    // handleTriggerProps()
-  });
+    setOpen(null)
+  }, [closeCard]);
 
   return (
     <div className="trigger__body">
@@ -57,8 +57,7 @@ export default function Triggers({ handleChildProps }) {
           isOpen={i === open}
           isHidden={i !== open && open !== null}
           onClick={() => handleOpen(i)}
-          setOpen={setOpen}
-          handleTriggerProps={handleTriggerProps}
+          handleClose={handleClose}
         />
       ))}
     </div>

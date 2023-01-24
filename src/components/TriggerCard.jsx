@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import arrowRight from "../assets/icons/la_angle-down.svg";
 import Select from "./Select";
 import Modal from "./Modal";
@@ -11,20 +11,13 @@ export default function TriggerCard({
   isOpen,
   isHidden,
   onClick,
-  setOpen,
-  handleTriggerProps,
+  handleClose
 }) {
   const [showModal, setShowModal] = useState(false);
 
   const cardClass = isOpen ? "open" : "";
   const hiddenClass = isHidden ? "closed" : "";
 
-  const closeCard = () => {
-    setOpen(null);
-    console.log("close");
-    // handleChildProps({ trigger: null });
-    handleTriggerProps({ closed: null });
-  };
 
   return (
     <div
@@ -41,14 +34,14 @@ export default function TriggerCard({
             <button className="btn bordered" onClick={() => setShowModal(true)}>
               Test
             </button>
-            <button className="btn bordered close-button" onClick={closeCard}>
+            <button className="btn bordered close-button" onClick={() => handleClose(open)}>
               <MdClose color="#8c5ae8" />
             </button>
           </div>
         )}
         {isOpen && open==2 && (
           <div className="trigger__card_btns">
-            <button className="btn bordered close-button" onClick={closeCard}>
+            <button className="btn bordered close-button" onClick={() => handleClose(open)}>
               <MdClose color="#8c5ae8" />
             </button>
           </div>
