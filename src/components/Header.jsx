@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import logo from "../assets/logo.svg";
-import wallet from "../assets/icons/la_wallet.svg";
+import Wallet from "../components/icons/Wallet";
 import user from "../assets/icons/la_user.svg";
 import "../css/header.css";
 import { Link, useLocation } from "react-router-dom";
@@ -30,7 +30,7 @@ export default function Header() {
         </div>
         <div className="right">
           <div className="wallet">
-            <img src={wallet} alt="wlt" />
+            <Wallet />
             <p className="wallet__id">Connect</p>
           </div>
           <div className="dropdown">
@@ -39,10 +39,10 @@ export default function Header() {
               Account
             </button>
             <div className="dropdown-content">
-              <Link to="/notifications/login">Log In</Link>
-              <Link to="/notifications/signup">Sign Up</Link>
+              <Link to="/noteefee/login">Log In</Link>
+              <Link to="/noteefee/signup">Sign Up</Link>
               <hr className="divider"/>
-              <Link to="/notifications/">Notify</Link>
+              <Link to="/noteefee/">Notify</Link>
               <a href="#">Billing</a>
               <a href="#">Settings</a>
             </div>

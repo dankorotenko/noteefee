@@ -18,6 +18,9 @@ nav{
     gap: .5rem;
     cursor: pointer;
 }
+.right .wallet svg{
+  color: var(--primary-clr);
+}
 .right .wallet .wallet__id{
     text-overflow: ellipsis;
     white-space: nowrap;

@@ -22,14 +22,14 @@ export default function TriggerCard({
   const hiddenClass = isHidden ? "closed" : "";
   useEffect(() => {
     function handleClickOutside(event) {
-      if (ref.current && !event.target.closest('.trigger__body')) {
-        setOpen(null)
+      if (ref.current && !event.target.closest(".trigger__body")) {
+        handleClose(Math.random);
       }
     }
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [ref]);
 
@@ -41,7 +41,7 @@ export default function TriggerCard({
     >
       <div className="trigger__card_title">
         <h4>
-          <img src={card.img} alt={card.img} />
+          {card.img}
           {card.title}
         </h4>
         <div className="trigger__card_btns">

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 
-import account from "../assets/account.svg";
-import aptos from "../assets/aptos.svg";
-import wallet from "../assets/wallet.svg";
-import topaz from "../assets/topaz.svg";
+import Account from "./icons/logos/Account";
+import Aptos from "./icons/logos/Aptos";
+import Wallet from './icons/logos/Account'
+import Topaz from "./icons/logos/Topaz";
 import TriggerCard from "./TriggerCard";
 
 export default function Triggers({ handleChildProps }) {
@@ -14,22 +14,22 @@ export default function Triggers({ handleChildProps }) {
     {
       title: "Account",
       desc: "Track Account Liquidity",
-      img: account,
+      img: <Account />,
     },
     {
       title: "Aptos",
       desc: "Track APT price",
-      img: aptos,
+      img: <Aptos />,
     },
     {
       title: "Wallet",
       desc: "Track new transaction",
-      img: wallet,
+      img: <Wallet />,
     },
     {
       title: "Topaz",
       desc: "Track NFT floor price",
-      img: topaz,
+      img: <Topaz />,
     },
   ];
 
