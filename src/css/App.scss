@@ -113,7 +113,7 @@ section.info {
       width: 100%;
       // animation: opened 1000ms ease;
       height: calc(100% + 1.5rem);
-      &:hover{
+      &:hover {
         box-shadow: none;
         cursor: default;
       }
@@ -121,7 +121,7 @@ section.info {
     &.closed {
       display: none;
     }
-    
+
     &_title {
       display: flex;
       gap: 0.5rem;
@@ -130,11 +130,18 @@ section.info {
         display: flex;
         align-items: center;
         gap: 0.5rem;
+        svg{
+          width: 2rem;
+          height: 2rem;
+        }
       }
     }
     &_btns {
       display: flex;
       gap: 1rem;
+      .close-button {
+        padding: 0.5rem;
+      }
     }
     &_body {
       margin-top: 1rem;
@@ -158,9 +165,20 @@ section.info {
             padding: 0.5rem 1rem;
             width: 60%;
           }
+          .collection-select {
+            border: 1px solid var(--primary-clr);
+            color: var(--primary-clr);
+            border-radius: 0.25rem;
+            background-color: #eef7fd;
+            padding: 0.75rem 1rem;
+            width: 60%;
+          }
           .tip {
             font-size: 0.625rem;
             color: var(--green-clr);
+          }
+          .topaz-tip {
+            line-height: 1.5rem;
           }
           &.threshold-amound {
             .inputs-wrapper {
@@ -198,12 +216,11 @@ section.info {
             }
           }
         }
-        .close-button{
+        .continue-button {
           position: absolute;
           bottom: 0;
           right: 0;
-          padding: .5rem;
-          &:hover{
+          &:hover {
             cursor: pointer;
           }
         }
@@ -231,7 +248,7 @@ hr {
   background-color: var(--primary-clr);
   border-radius: 1.5rem;
   padding: 0.5rem 2rem;
-  margin-block: .5rem 4rem;
+  margin-block: 0.5rem 4rem;
   width: 70%;
 }
 .submit-wrapper .submit-input {

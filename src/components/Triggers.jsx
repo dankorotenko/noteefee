@@ -1,63 +1,64 @@
 import React, { useEffect, useState } from "react";
 
-import account from "../assets/account.svg";
-import aptos from "../assets/aptos.svg";
-import wallet from "../assets/wallet.svg";
-import topaz from "../assets/topaz.svg";
+import Account from "./icons/logos/Account";
+import Aptos from "./icons/logos/Aptos";
+import Wallet from './icons/logos/Account'
+import Topaz from "./icons/logos/Topaz";
 import TriggerCard from "./TriggerCard";
 
 export default function Triggers({ handleChildProps }) {
   const [open, setOpen] = useState(null);
+  const [closeCard, setCloseCard] = useState(null);
+
   const cards = [
     {
       title: "Account",
       desc: "Track Account Liquidity",
-      img: account,
+      img: <Account />,
     },
     {
       title: "Aptos",
       desc: "Track APT price",
-      img: aptos,
+      img: <Aptos />,
     },
     {
       title: "Wallet",
       desc: "Track new transaction",
-      img: wallet,
+      img: <Wallet />,
     },
     {
       title: "Topaz",
       desc: "Track NFT floor price",
-      img: topaz,
+      img: <Topaz />,
     },
   ];
-  
+
   const handleOpen = (i) => {
     setOpen(i);
     handleChildProps({ trigger: cards[0].title.toLowerCase() });
   };
 
-  // const closeCard = () => {
-  //   setOpen(null);
-  //   handleChildProps({ trigger: null });
-  // };
-  const handleTriggerProps =(props) => {
-    setOpen(props.closed)
-  }
+  const handleClose = (i) => {
+    setCloseCard(i);
+  };
+
   useEffect(() => {
-    // handleTriggerProps()
-  });
+    setOpen(null);
+    handleChildProps({ trigger: null });
+  }, [closeCard]);
 
   return (
     <div className="trigger__body">
       {cards.map((card, i) => (
         <TriggerCard
           card={card}
+          open={open}
           key={i}
           isOpen={i === open}
           isHidden={i !== open && open !== null}
           onClick={() => handleOpen(i)}
+          handleClose={handleClose}
           setOpen={setOpen}
-          handleTriggerProps={handleTriggerProps}
         />
       ))}
     </div>

@@ -1,18 +1,12 @@
-import React, { useState } from "react";
-
-
-import "./css/home.scss";
-
+import React from "react";
 import Sidebar from "./components/Sidebar";
-import Notifications from "./Notifications";
 
-export default function Home() {
-
+export default function Streams() {
   return (
     <div className="dashboard">
       <Sidebar />
       <section className="content">
-        <Notifications />
+        <h1>Streams</h1>
       </section>
     </div>
   );
