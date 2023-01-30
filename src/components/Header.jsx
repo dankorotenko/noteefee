@@ -24,7 +24,7 @@ export default function Header() {
     <header className={`${auth}`}>
       <nav className="container">
         <div className="logo">
-          <a href="/">
+          <a href="/noteefee/notifications">
             <img src={logo} alt="noteefee" />
           </a>
         </div>
@@ -42,7 +42,7 @@ export default function Header() {
               <Link to="/noteefee/login">Log In</Link>
               <Link to="/noteefee/signup">Sign Up</Link>
               <hr className="divider"/>
-              <Link to="/noteefee/">Notify</Link>
+              <Link to="/noteefee/notifications">Notify</Link>
               <a href="#">Billing</a>
               <a href="#">Settings</a>
             </div>

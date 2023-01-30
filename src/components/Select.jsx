@@ -20,7 +20,7 @@ export default function Select({ className, options }) {
   return (
     <div className={`select ${className}`}>
       <div className="select-outside" onClick={() => handleOpen()}>
-        {selectedOption} <BsChevronDown color="#8c5ae8" />
+        {selectedOption} <BsChevronDown color="#8c5ae8" style={opened ? {'transform': 'rotateZ(180deg)'}: ''} />
       </div>
       <ul ref={ref} className={`select-inside ${opened && "opened"}`}>
         {options.map((option) => (

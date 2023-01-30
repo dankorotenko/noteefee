@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import InfoCard from "./components/InfoCard";
-import { BsArrowDown } from "react-icons/bs";
-import bolt from "./assets/bolt.svg";
-import bell from "./assets/bell.svg";
-import Triggers from "./components/Triggers";
 import { Link } from "react-router-dom";
+import { BsArrowDown } from "react-icons/bs";
+
+import InfoCard from "../components/InfoCard";
+import Triggers from "../components/Triggers";
+
+import bolt from "../assets/bolt.svg";
+import bell from "../assets/bell.svg";
+
 export default function Home() {
   const [trigger, setTrigger] = useState(null);
   const handleChildProps = (childProps) => {

@@ -45,7 +45,7 @@ export default function TriggerCard({
           {card.title}
         </h4>
         <div className="trigger__card_btns">
-          {isOpen && (open == 0 || open == 1 || open == 3) && (
+          {isOpen && (open == 0 || open == 3) && (
             <>
               <button
                 className="btn bordered"
@@ -61,7 +61,7 @@ export default function TriggerCard({
               </button>
             </>
           )}
-          {isOpen && open == 2 && (
+          {isOpen && open == 2 || open == 1&& (
             <>
               <button
                 className="btn bordered close-button"
@@ -111,7 +111,7 @@ export default function TriggerCard({
             <div className="field-wrapper threshold-amound">
               <label htmlFor="threshold-amound">Aptos Price</label>
               <div className="inputs-wrapper">
-                <Select className={""} options={["Below", "Above", "Equal"]} />
+                <Select className={""} options={["Below", "Above", "Equal to"]} />
                 <div className="input-wrapper">
                   <input
                     type="number"
