@@ -1,6 +1,5 @@
 import React from "react";
 
-import { v4 as uuidv4} from 'uuid';
 
 import { Link } from "react-router-dom";
 import { AiOutlineInfoCircle } from "react-icons/ai";
@@ -11,38 +10,12 @@ import "../css/home.scss";
 import InfoCard from "../components/InfoCard";
 import Sidebar from "../components/Sidebar";
 
-import Telegram from "../components/icons/logos/Telegram";
-import Aptos from "../components/icons/logos/Aptos";
-import Discord from "../components/icons/logos/Discord";
-import Slack from "../components/icons/logos/Slack";
+
+
+import { notifications } from "../data/dummy";
 
 export default function Notifications() {
-  const notifications = [
-    {
-      id: uuidv4(),
-      title: "Notification name",
-      logos: [<Aptos />, <Telegram />],
-      description: "Aptos – Track NFT floor price",
-      active: true,
-      amount: 13,
-    },
-    {
-      id: uuidv4(),
-      title: "Disk_15APT",
-      logos: [<Aptos />, <Discord />],
-      description: "Aptos account balance - below 15 APT",
-      active: true,
-      amount: 13,
-    },
-    {
-      id: uuidv4(),
-      title: "Notification name",
-      logos: [<Aptos />, <Slack />],
-      description: "New account transaction",
-      active: false,
-      amount: 2,
-    },
-  ];
+  
   return (
     <div className="dashboard">
       <Sidebar tab={'notifications'}/>
