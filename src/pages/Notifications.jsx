@@ -1,6 +1,5 @@
 import React from "react";
 
-
 import { Link } from "react-router-dom";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { BsPlusCircle } from "react-icons/bs";
@@ -10,15 +9,12 @@ import "../css/home.scss";
 import InfoCard from "../components/InfoCard";
 import Sidebar from "../components/Sidebar";
 
-
-
 import { notifications } from "../data/dummy";
 
 export default function Notifications() {
-  
   return (
     <div className="dashboard">
-      <Sidebar tab={'notifications'}/>
+      <Sidebar tab={"notifications"} />
       <section className="content">
         <div className="content__header">
           <h2 className="content__header_title">
@@ -31,15 +27,19 @@ export default function Notifications() {
           </div>
         </div>
         <div className="content__subheader">
-          <InfoCard title="Active Notifications" percent={2} max={10} />
+          <InfoCard
+            title="Active Notifications"
+            percent={notifications.length}
+            max={10}
+          />
           <InfoCard
             title="Delivered Notifications / Month"
-            percent={23}
+            percent={notifications.reduce((sum, obj) => sum + obj.history.length, 0)}
             max={100}
           />
         </div>
         <div className="content__body">
-          {notifications.length != 0 &&
+          {notifications.length != 0 ? (
             notifications.map((n, i) => (
               <Link
                 to={`/noteefee/notifications/${n.id}`}
@@ -66,20 +66,22 @@ export default function Notifications() {
                     {n.active ? "Active" : "No Active"}
                   </div>
                   <div className="notification-card__amount">
-                    {n.amount} Delivered
+                    {n.history.length} Delivered
                   </div>
                 </div>
               </Link>
-            ))}
-          <Link
-            to="/noteefee/notifications/create"
-            className="notification-card add"
-          >
-            <div className="wrapper">
-              <BsPlusCircle color="#8C5AE8" size={32} />
-              Create Notification
-            </div>
-          </Link>
+            ))
+          ) : (
+            <Link
+              to="/noteefee/notifications/create"
+              className="notification-card add"
+            >
+              <div className="wrapper">
+                <BsPlusCircle color="#8C5AE8" size={32} />
+                Create Notification
+              </div>
+            </Link>
+          )}
         </div>
       </section>
     </div>

@@ -169,6 +169,7 @@
     }
   }
   &.notification {
+    background-image: none;
     .expanded-card {
       padding: 1.25rem 2.5rem;
       border-bottom: 2px solid var(--primary-clr);
@@ -214,9 +215,55 @@
     }
     .content__body {
       padding: 1.125rem 2.5rem;
+      display: block;
+      width: 100%;
       &_title {
         font-weight: 600;
         font-size: 1.125rem;
+      }
+      &_table{
+        width: 100%;
+        font-size: .875rem;
+        margin-top: 1.25rem;
+        border-collapse: collapse;
+        thead{
+          color: var(--black2-clr);
+        }
+        tbody{
+          color: var(--text-clr);
+          tr{
+            &:nth-child(odd){
+              background-color: var(--bg-clr);
+            }
+            &:nth-child(even){
+              background-color: var(--gray-2-clr);
+            }
+          }
+        }
+        th, td{
+          border-bottom: 1px solid var(--gray3-clr);
+          padding: 0.625rem;
+          text-align: left;
+          font-weight: 400;
+        }
+      }
+      .no-data{
+        width: 330px;
+        height: 300px;
+        background: url('../no-delivered.png') no-repeat;
+        margin: 0 auto;
+        margin-top: 9rem;
+        display: flex;
+        border-radius: .625rem;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: column;
+        font-size: 1.25rem;
+        color: var(--primary-clr);
+        padding-inline: 3.5rem;
+        padding-top: 3.25rem;
+        text-align: center;
+        font-weight: 800;
       }
     }
   }
