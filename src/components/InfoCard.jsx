@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 export default function InfoCard({ title, percent, max }) {
   const [progress, setProgress] = useState((percent / max) * 100);
-
   return (
     <div className="card">
       <h4 className="card__title">{title}</h4>

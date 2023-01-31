@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import arrowRight from "../assets/icons/la_angle-down.svg";
 import Select from "./Select";
 import Modal from "./Modal";
-import useClickOutside from "../hooks/useClickOutside";
+
 
 import { MdClose } from "react-icons/md";
 
@@ -12,14 +12,26 @@ export default function TriggerCard({
   isOpen,
   isHidden,
   onClick,
-  handleClose,
-  setOpen,
+  setCloseCard,
 }) {
   const ref = useRef();
   const [showModal, setShowModal] = useState(false);
+  const [formData, setFormData] = useState({
+    userAddress: '',
+    thresholdAmount: '',
+    type: 'Below'
+  });
 
   const cardClass = isOpen ? "open" : "";
   const hiddenClass = isHidden ? "closed" : "";
+
+  const handleClose = (i) => {
+    setCloseCard(i);
+  };
+  const handleSelectProps = (props) => {
+    setFormData({ ...formData, type : props.selected });
+  }
+
   useEffect(() => {
     function handleClickOutside(event) {
       if (ref.current && !event.target.closest(".trigger__body")) {
@@ -32,6 +44,10 @@ export default function TriggerCard({
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [ref]);
+  
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   return (
     <div
@@ -45,7 +61,7 @@ export default function TriggerCard({
           {card.title}
         </h4>
         <div className="trigger__card_btns">
-          {isOpen && (open == 0 || open == 1 || open == 3) && (
+          {isOpen && (open == 0 || open == 3) && (
             <>
               <button
                 className="btn bordered"
@@ -61,16 +77,17 @@ export default function TriggerCard({
               </button>
             </>
           )}
-          {isOpen && open == 2 && (
-            <>
-              <button
-                className="btn bordered close-button"
-                onClick={() => handleClose(Math.random)}
-              >
-                <MdClose color="#8c5ae8" />
-              </button>
-            </>
-          )}
+          {(isOpen && open == 2) ||
+            (open == 1 && (
+              <>
+                <button
+                  className="btn bordered close-button"
+                  onClick={() => handleClose(Math.random)}
+                >
+                  <MdClose color="#8c5ae8" />
+                </button>
+              </>
+            ))}
         </div>
       </div>
       <div className={`trigger__card_body ${isOpen ? "opened" : ""}`}>
@@ -82,18 +99,24 @@ export default function TriggerCard({
                 type="text"
                 placeholder="0*123456789..."
                 id="user-address"
+                name="userAddress"
+                onChange={handleChange}
+                value={formData.userAddress}
               />
               <p className="tip">Enter the address that you use on Compount</p>
             </div>
             <div className="field-wrapper threshold-amound">
               <label htmlFor="threshold-amound">Threshold Amound</label>
               <div className="inputs-wrapper">
-                <Select className={""} options={["Below", "Above", "Equal"]} />
+                <Select options={["Below", "Above", "Equal to"]} value={formData.type} handleSelectProps={handleSelectProps} />
                 <div className="input-wrapper">
                   <input
                     type="number"
                     placeholder="0.00"
                     id="threshold-amound"
+                    name="thresholdAmount"
+                    onChange={handleChange}
+                    value={formData.thresholdAmount}
                   />
                   <p>USD</p>
                 </div>
@@ -111,7 +134,10 @@ export default function TriggerCard({
             <div className="field-wrapper threshold-amound">
               <label htmlFor="threshold-amound">Aptos Price</label>
               <div className="inputs-wrapper">
-                <Select className={""} options={["Below", "Above", "Equal"]} />
+                <Select
+                  className={""}
+                  options={["Below", "Above", "Equal to"]}
+                />
                 <div className="input-wrapper">
                   <input
                     type="number"

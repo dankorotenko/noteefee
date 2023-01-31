@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { GrClose } from "react-icons/gr";
 import { BsExclamationTriangle, BsChevronDown } from "react-icons/bs";
 import Select from "./Select";
@@ -36,7 +36,7 @@ export default function Modal({ showModal, setShowModal }) {
             Will use the lastest block when left empty
           </p>
           <div className="modal__inner_body__input">
-            <Select className="modal__inner_body__select" options={options}/>
+            <Select className="modal__inner_body__select" options={options} value={options[0]}/>
             <input type="text" placeholder="Test block #001" />
           </div>
           <div className="modal__inner_body__btns">

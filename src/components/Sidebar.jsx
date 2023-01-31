@@ -7,8 +7,8 @@ import Cog from "./icons/Cog";
 import Wallet from "./icons/Wallet";
 import { Link } from "react-router-dom";
 
-export default function Sidebar() {
-  const [activeTab, setActiveTab] = useState("notifications");
+export default function Sidebar({tab}) {
+  const [activeTab, setActiveTab] = useState(tab);
   const tabs = [
     {
       title: "Notifications",
@@ -40,7 +40,7 @@ export default function Sidebar() {
     <aside className="sidebar">
       <ul className="sidebar__list">
         {tabs.map((tab) => (
-          <li
+          <Link to={tab.path}
             className={`sidebar__list_link ${
               activeTab === tab.title.toLowerCase() && "active"
             }`}
@@ -49,7 +49,7 @@ export default function Sidebar() {
           >
             {tab.component}
             {tab.title}
-          </li>
+          </Link>
         ))}
       </ul>
     </aside>
