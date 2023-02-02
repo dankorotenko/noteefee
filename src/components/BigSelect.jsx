@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { BsChevronDown } from "react-icons/bs";
 
 import useClickOutside from "../hooks/useClickOutside";
-export default function Select({ className, options, value, ...props }) {
+export default function BigSelect({ className, options, value, ...props }) {
   const ref = useRef(null);
   const [opened, setOpened] = useState(false);
   const [selectedOption, setSelectedOption] = useState(value);
@@ -14,16 +14,16 @@ export default function Select({ className, options, value, ...props }) {
   const handleOption = (option, e) => {
     setSelectedOption(option);
     setOpened(false);
-
   };
   useEffect(() => {
-    props.handleSelectProps && props.handleSelectProps({ selected: selectedOption })
-  },[selectedOption])
+    props.handleBigSelectProps &&
+      props.handleBigSelectProps({ selected: selectedOption });
+  }, [selectedOption]);
 
   useClickOutside(ref, () => setOpened(false));
 
   return (
-    <div className={`${className}`} ref={ref}>
+    <div className={`big-select ${className} ${opened && "opened"}`} ref={ref}>
       <div className="select-outside" onClick={() => handleOpen()}>
         {selectedOption}
         <BsChevronDown
@@ -32,14 +32,15 @@ export default function Select({ className, options, value, ...props }) {
         />
       </div>
       <ul className={`select-inside ${opened && "opened"}`}>
-        {options.map((option) => (
+        {options.map((option, i) => (
           <li
-            className={`${selectedOption === option ? "active" : ""}`}
-            key={option}
-            value={option}
-            onClick={() => handleOption(option)}
+            className={`${selectedOption === option.name ? "active" : ""}`}
+            key={i}
+            value={option.name}
+            onClick={() => handleOption(option.name)}
           >
-            {option}
+            <img src={option.img} alt={i} />
+            {option.name}
           </li>
         ))}
       </ul>

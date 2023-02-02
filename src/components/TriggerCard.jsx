@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import arrowRight from "../assets/icons/la_angle-down.svg";
+import BigSelect from "./BigSelect";
 import Select from "./Select";
 import Modal from "./Modal";
 
-
 import { MdClose } from "react-icons/md";
-
+import  collection  from "../assets/collection.png";
 export default function TriggerCard({
   card,
   open,
@@ -17,10 +17,41 @@ export default function TriggerCard({
   const ref = useRef();
   const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState({
-    userAddress: '',
-    thresholdAmount: '',
-    type: 'Below'
+    userAddress: "",
+    thresholdAmount: "",
+    type: "Below",
+    aptosPrice: "",
+    userWalletAddress: "",
+    floorPrice: "",
+    collection: "Collection URL",
   });
+
+  const collectionOptions = [
+    {
+      img: collection,
+      name: 'Collection #1'
+    },
+    {
+      img: collection,
+      name: 'Collection #2'
+    },
+    {
+      img: collection,
+      name: 'Collection #3'
+    },
+    {
+      img: collection,
+      name: 'Collection #4'
+    },
+    {
+      img: collection,
+      name: 'Collection #5'
+    },
+    {
+      img: collection,
+      name: 'Collection #6'
+    },
+  ]
 
   const cardClass = isOpen ? "open" : "";
   const hiddenClass = isHidden ? "closed" : "";
@@ -29,8 +60,11 @@ export default function TriggerCard({
     setCloseCard(i);
   };
   const handleSelectProps = (props) => {
-    setFormData({ ...formData, type : props.selected });
-  }
+    setFormData({ ...formData, type: props.selected });
+  };
+  const handleBigSelectProps = (props) => {
+    setFormData({ ...formData, collection: props.selected });
+  };
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -44,7 +78,7 @@ export default function TriggerCard({
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [ref]);
-  
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -108,7 +142,12 @@ export default function TriggerCard({
             <div className="field-wrapper threshold-amound">
               <label htmlFor="threshold-amound">Threshold Amound</label>
               <div className="inputs-wrapper">
-                <Select options={["Below", "Above", "Equal to"]} value={formData.type} handleSelectProps={handleSelectProps} />
+                <Select
+                  className={"select"}
+                  options={["Below", "Above", "Equal to"]}
+                  value={formData.type}
+                  handleSelectProps={handleSelectProps}
+                />
                 <div className="input-wrapper">
                   <input
                     type="number"
@@ -135,14 +174,19 @@ export default function TriggerCard({
               <label htmlFor="threshold-amound">Aptos Price</label>
               <div className="inputs-wrapper">
                 <Select
-                  className={""}
+                  className={"select"}
                   options={["Below", "Above", "Equal to"]}
+                  value={formData.type}
+                  handleSelectProps={handleSelectProps}
                 />
                 <div className="input-wrapper">
                   <input
                     type="number"
                     placeholder="0.00"
-                    id="threshold-amound"
+                    id="aptos-price"
+                    name="aptosPrice"
+                    onChange={handleChange}
+                    value={formData.aptosPrice}
                   />
                   <p>USD</p>
                 </div>
@@ -154,11 +198,14 @@ export default function TriggerCard({
         {isOpen && open == 2 && (
           <>
             <div className="field-wrapper user-address">
-              <label htmlFor="user-address">User Wallet Address</label>
+              <label htmlFor="user-wallet-address">User Wallet Address</label>
               <input
                 type="text"
                 placeholder="0*123456789..."
-                id="user-address"
+                id="user-waller-address"
+                name="userWalletAddress"
+                onChange={handleChange}
+                value={formData.userWalletAddress}
               />
               <p className="tip">Enter the address that you use on Compount</p>
             </div>
@@ -169,33 +216,37 @@ export default function TriggerCard({
           <>
             <div className="field-wrapper user-address">
               <label htmlFor="user-address">Collection</label>
-              {/* change to separate select */}
-              <Select
-                className={"collection-select"}
-                options={[
-                  "Collection URL",
-                  "Collection #1",
-                  "Collection #2",
-                  "Collection #3",
-                ]}
+              <BigSelect
+                className={"collection-select big-select"}
+                options={collectionOptions}
+                value={formData.collection}
+                handleBigSelectProps={handleBigSelectProps}
               />
               <p className="topaz-tip">
                 Provide a collection URL from <a href="#">topaz.co</a>, or
-                choose from the list <br /> Example format:{" "}
+                choose from the list <br /> Example format:
                 <a href="#">
                   https://www.topaz.so/collection/&lt;collection-name&gt;
                 </a>
               </p>
             </div>
             <div className="field-wrapper threshold-amound">
-              <label htmlFor="threshold-amound">Floor Price</label>
+              <label htmlFor="floor-price">Floor Price</label>
               <div className="inputs-wrapper">
-                <Select className={""} options={["Below", "Above", "Equal"]} />
+                <Select
+                  className={"select"}
+                  options={["Below", "Above", "Equal"]}
+                  value={formData.type}
+                  handleSelectProps={handleSelectProps}
+                />
                 <div className="input-wrapper">
                   <input
                     type="number"
                     placeholder="0.00"
-                    id="threshold-amound"
+                    id="floor-price"
+                    name="floorPrice"
+                    onChange={handleChange}
+                    value={formData.floorPrice}
                   />
                   <p>APT</p>
                 </div>

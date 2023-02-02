@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
-export default function InfoCard({ title, percent, max }) {
+export default function InfoCard({ title, percent, max, ...props }) {
   const [progress, setProgress] = useState((percent / max) * 100);
   return (
     <div className="card">
-      <h4 className="card__title">{title}</h4>
+      <h4 className="card__title">{title} <span className="card__title_tip">{props.tip}</span></h4>
       <div className="card__body">
         <div className="bar" style={{ "--progress": progress }}>
           <div className="progress"></div>

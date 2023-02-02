@@ -66,6 +66,11 @@
       border: 0;
       border-radius: 0;
       background-color: transparent;
+      &__title{
+        &_tip{
+          color: var(--primary-clr);
+        }
+      }
       &__body {
         margin-top: 1rem;
         .bar {
@@ -133,6 +138,7 @@
         border-radius: 0.75rem;
         font-size: 0.75rem;
         color: #000;
+        font-weight: 500;
         &.no-active {
           background-color: var(--gray-2-clr);
           color: var(--gray3-clr);
@@ -141,7 +147,7 @@
       &__amount {
         font-size: 0.625rem;
         text-align: center;
-        color: var(--gray-clr);
+        color: var(--black2-clr);
       }
       &.add {
         background-color: transparent;
@@ -199,7 +205,7 @@
       }
       &__delivered {
         font-size: 0.875rem;
-        color: var(--gray-clr);
+        color: var(--black2-clr);
       }
       &__status {
         background-color: var(--green-clr);
@@ -207,6 +213,7 @@
         border-radius: 0.75rem;
         font-size: 0.75rem;
         color: #000;
+        font-weight: 500;
         &.no-active {
           background-color: var(--gray-2-clr);
           color: var(--gray3-clr);
