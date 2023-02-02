@@ -21,7 +21,7 @@ export default function Notifications() {
             Notifications <AiOutlineInfoCircle color="#A8A8A8" />
           </h2>
           <div className="content__header_btns">
-            <Link to="/noteefee/notifications/create" className="btn filled">
+            <Link to="/noteefee/notifications/create" className="btn filled" style={{'paddingInline': '2.25rem', 'paddingBlock': '.625rem'}}>
               Create a New notification
             </Link>
           </div>
@@ -33,9 +33,10 @@ export default function Notifications() {
             max={10}
           />
           <InfoCard
-            title="Delivered Notifications / Month"
+            title="Delivered Notifications"
             percent={notifications.reduce((sum, obj) => sum + obj.history.length, 0)}
             max={100}
+            tip="*month"
           />
         </div>
         <div className="content__body">
