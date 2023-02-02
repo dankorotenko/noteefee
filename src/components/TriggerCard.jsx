@@ -3,7 +3,6 @@ import arrowRight from "../assets/icons/la_angle-down.svg";
 import Select from "./Select";
 import Modal from "./Modal";
 
-
 import { MdClose } from "react-icons/md";
 
 export default function TriggerCard({
@@ -17,9 +16,12 @@ export default function TriggerCard({
   const ref = useRef();
   const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState({
-    userAddress: '',
-    thresholdAmount: '',
-    type: 'Below'
+    userAddress: "",
+    thresholdAmount: "",
+    type: "Below",
+    aptosPrice: "",
+    userWalletAddress: "",
+    floorPrice: "",
   });
 
   const cardClass = isOpen ? "open" : "";
@@ -29,8 +31,8 @@ export default function TriggerCard({
     setCloseCard(i);
   };
   const handleSelectProps = (props) => {
-    setFormData({ ...formData, type : props.selected });
-  }
+    setFormData({ ...formData, type: props.selected });
+  };
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -44,7 +46,7 @@ export default function TriggerCard({
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [ref]);
-  
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -108,7 +110,11 @@ export default function TriggerCard({
             <div className="field-wrapper threshold-amound">
               <label htmlFor="threshold-amound">Threshold Amound</label>
               <div className="inputs-wrapper">
-                <Select options={["Below", "Above", "Equal to"]} value={formData.type} handleSelectProps={handleSelectProps} />
+                <Select
+                  options={["Below", "Above", "Equal to"]}
+                  value={formData.type}
+                  handleSelectProps={handleSelectProps}
+                />
                 <div className="input-wrapper">
                   <input
                     type="number"
@@ -135,14 +141,18 @@ export default function TriggerCard({
               <label htmlFor="threshold-amound">Aptos Price</label>
               <div className="inputs-wrapper">
                 <Select
-                  className={""}
                   options={["Below", "Above", "Equal to"]}
+                  value={formData.type}
+                  handleSelectProps={handleSelectProps}
                 />
                 <div className="input-wrapper">
                   <input
                     type="number"
                     placeholder="0.00"
-                    id="threshold-amound"
+                    id="aptos-price"
+                    name="aptosPrice"
+                    onChange={handleChange}
+                    value={formData.aptosPrice}
                   />
                   <p>USD</p>
                 </div>
@@ -154,11 +164,14 @@ export default function TriggerCard({
         {isOpen && open == 2 && (
           <>
             <div className="field-wrapper user-address">
-              <label htmlFor="user-address">User Wallet Address</label>
+              <label htmlFor="user-wallet-address">User Wallet Address</label>
               <input
                 type="text"
                 placeholder="0*123456789..."
-                id="user-address"
+                id="user-waller-address"
+                name="userWalletAddress"
+                onChange={handleChange}
+                value={formData.userWalletAddress}
               />
               <p className="tip">Enter the address that you use on Compount</p>
             </div>
@@ -188,14 +201,21 @@ export default function TriggerCard({
               </p>
             </div>
             <div className="field-wrapper threshold-amound">
-              <label htmlFor="threshold-amound">Floor Price</label>
+              <label htmlFor="floor-price">Floor Price</label>
               <div className="inputs-wrapper">
-                <Select className={""} options={["Below", "Above", "Equal"]} />
+                <Select
+                  options={["Below", "Above", "Equal"]}
+                  value={formData.type}
+                  handleSelectProps={handleSelectProps}
+                />
                 <div className="input-wrapper">
                   <input
                     type="number"
                     placeholder="0.00"
-                    id="threshold-amound"
+                    id="floor-price"
+                    name="floorPrice"
+                    onChange={handleChange}
+                    value={formData.floorPrice}
                   />
                   <p>APT</p>
                 </div>

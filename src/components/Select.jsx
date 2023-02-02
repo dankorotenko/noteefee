@@ -23,7 +23,7 @@ export default function Select({ className, options, value, ...props }) {
   useClickOutside(ref, () => setOpened(false));
 
   return (
-    <div className={`select ${className}`}>
+    <div className={`select ${className}`} ref={ref}>
       <div className="select-outside" onClick={() => handleOpen()}>
         {selectedOption}
         <BsChevronDown
@@ -31,7 +31,7 @@ export default function Select({ className, options, value, ...props }) {
           style={opened ? { transform: "rotateZ(180deg)" } : ""}
         />
       </div>
-      <ul ref={ref} className={`select-inside ${opened && "opened"}`}>
+      <ul className={`select-inside ${opened && "opened"}`}>
         {options.map((option) => (
           <li
             className={`${selectedOption === option ? "active" : ""}`}
