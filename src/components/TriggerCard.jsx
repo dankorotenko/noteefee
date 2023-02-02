@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import arrowRight from "../assets/icons/la_angle-down.svg";
+import BigSelect from "./BigSelect";
 import Select from "./Select";
 import Modal from "./Modal";
 
 import { MdClose } from "react-icons/md";
-
+import  collection  from "../assets/collection.png";
 export default function TriggerCard({
   card,
   open,
@@ -22,7 +23,35 @@ export default function TriggerCard({
     aptosPrice: "",
     userWalletAddress: "",
     floorPrice: "",
+    collection: "Collection URL",
   });
+
+  const collectionOptions = [
+    {
+      img: collection,
+      name: 'Collection #1'
+    },
+    {
+      img: collection,
+      name: 'Collection #2'
+    },
+    {
+      img: collection,
+      name: 'Collection #3'
+    },
+    {
+      img: collection,
+      name: 'Collection #4'
+    },
+    {
+      img: collection,
+      name: 'Collection #5'
+    },
+    {
+      img: collection,
+      name: 'Collection #6'
+    },
+  ]
 
   const cardClass = isOpen ? "open" : "";
   const hiddenClass = isHidden ? "closed" : "";
@@ -32,6 +61,9 @@ export default function TriggerCard({
   };
   const handleSelectProps = (props) => {
     setFormData({ ...formData, type: props.selected });
+  };
+  const handleBigSelectProps = (props) => {
+    setFormData({ ...formData, collection: props.selected });
   };
 
   useEffect(() => {
@@ -111,6 +143,7 @@ export default function TriggerCard({
               <label htmlFor="threshold-amound">Threshold Amound</label>
               <div className="inputs-wrapper">
                 <Select
+                  className={"select"}
                   options={["Below", "Above", "Equal to"]}
                   value={formData.type}
                   handleSelectProps={handleSelectProps}
@@ -141,6 +174,7 @@ export default function TriggerCard({
               <label htmlFor="threshold-amound">Aptos Price</label>
               <div className="inputs-wrapper">
                 <Select
+                  className={"select"}
                   options={["Below", "Above", "Equal to"]}
                   value={formData.type}
                   handleSelectProps={handleSelectProps}
@@ -182,19 +216,15 @@ export default function TriggerCard({
           <>
             <div className="field-wrapper user-address">
               <label htmlFor="user-address">Collection</label>
-              {/* change to separate select */}
-              <Select
-                className={"collection-select"}
-                options={[
-                  "Collection URL",
-                  "Collection #1",
-                  "Collection #2",
-                  "Collection #3",
-                ]}
+              <BigSelect
+                className={"collection-select big-select"}
+                options={collectionOptions}
+                value={formData.collection}
+                handleBigSelectProps={handleBigSelectProps}
               />
               <p className="topaz-tip">
                 Provide a collection URL from <a href="#">topaz.co</a>, or
-                choose from the list <br /> Example format:{" "}
+                choose from the list <br /> Example format:
                 <a href="#">
                   https://www.topaz.so/collection/&lt;collection-name&gt;
                 </a>
@@ -204,6 +234,7 @@ export default function TriggerCard({
               <label htmlFor="floor-price">Floor Price</label>
               <div className="inputs-wrapper">
                 <Select
+                  className={"select"}
                   options={["Below", "Above", "Equal"]}
                   value={formData.type}
                   handleSelectProps={handleSelectProps}
