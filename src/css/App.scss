@@ -17,8 +17,21 @@ main {
   background-repeat: no-repeat;
   background-position: right top;
   background-position-y: -80px;
+  transition: background 200ms ease;
+  & > * {
+    transition: filter 200ms ease;
+  }
+
   &.account {
     background-image: url("/bg-account.png");
+    transition: background 200ms ease;
+    & > * {
+      filter: blur(3px);
+      transition: filter 200ms ease;
+    }
+    & > .trigger{
+      filter: blur(0);
+    }
   }
 }
 
