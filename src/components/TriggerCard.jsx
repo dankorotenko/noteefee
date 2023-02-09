@@ -5,7 +5,7 @@ import Select from "./Select";
 import Modal from "./Modal";
 
 import { MdClose } from "react-icons/md";
-import  collection  from "../assets/collection.png";
+import collection from "../assets/collection.png";
 export default function TriggerCard({
   card,
   open,
@@ -29,29 +29,29 @@ export default function TriggerCard({
   const collectionOptions = [
     {
       img: collection,
-      name: 'Collection #1'
+      name: "Collection #1",
     },
     {
       img: collection,
-      name: 'Collection #2'
+      name: "Collection #2",
     },
     {
       img: collection,
-      name: 'Collection #3'
+      name: "Collection #3",
     },
     {
       img: collection,
-      name: 'Collection #4'
+      name: "Collection #4",
     },
     {
       img: collection,
-      name: 'Collection #5'
+      name: "Collection #5",
     },
     {
       img: collection,
-      name: 'Collection #6'
+      name: "Collection #6",
     },
-  ]
+  ];
 
   const cardClass = isOpen ? "open" : "";
   const hiddenClass = isHidden ? "closed" : "";
@@ -94,11 +94,12 @@ export default function TriggerCard({
           {card.img}
           {card.title}
         </h4>
+
         <div className="trigger__card_btns">
           {isOpen && (open == 0 || open == 3) && (
             <>
               <button
-                className="btn bordered"
+                className="btn bordered test-button"
                 onClick={() => setShowModal(true)}
               >
                 Test
@@ -111,17 +112,16 @@ export default function TriggerCard({
               </button>
             </>
           )}
-          {(isOpen && open == 2) ||
-            (open == 1 && (
-              <>
-                <button
-                  className="btn bordered close-button"
-                  onClick={() => handleClose(Math.random)}
-                >
-                  <MdClose color="#8c5ae8" />
-                </button>
-              </>
-            ))}
+          {((isOpen && open == 2) || open == 1) && (
+            <>
+              <button
+                className="btn bordered close-button"
+                onClick={() => handleClose(Math.random)}
+              >
+                <MdClose color="#8c5ae8" />
+              </button>
+            </>
+          )}
         </div>
       </div>
       <div className={`trigger__card_body ${isOpen ? "opened" : ""}`}>
@@ -161,6 +161,7 @@ export default function TriggerCard({
                 </div>
               </div>
             </div>
+            <button className="btn bordered test-button" onClick={() => setShowModal(true)}>Test</button>
             <button className="btn filled continue-button">Continue</button>
           </>
         )}
@@ -217,7 +218,7 @@ export default function TriggerCard({
             <div className="field-wrapper user-address">
               <label htmlFor="user-address">Collection</label>
               <BigSelect
-                className={"collection-select big-select"}
+                className={"collection-select"}
                 options={collectionOptions}
                 value={formData.collection}
                 handleBigSelectProps={handleBigSelectProps}
@@ -252,6 +253,7 @@ export default function TriggerCard({
                 </div>
               </div>
             </div>
+            <button className="btn bordered test-button" onClick={() => setShowModal(true)}>Test</button>
             <button className="btn filled continue-button">Continue</button>
           </>
         )}

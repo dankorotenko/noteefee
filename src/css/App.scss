@@ -29,8 +29,25 @@ main {
       filter: blur(3px);
       transition: filter 200ms ease;
     }
-    & > .trigger{
+    & > .trigger {
       filter: blur(0);
+    }
+  }
+  .wallet {
+    display: none;
+    background: linear-gradient(125.73deg, #d7c7f4 -2.21%, #f8bdad 99.9%);
+    border-radius: 0.625rem;
+    align-items: center;
+    padding: 0.625rem;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    svg {
+      width: 64px;
+    }
+    &__id {
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 }
@@ -89,6 +106,7 @@ section.info {
   width: 90%;
   margin-block: 1rem;
   background-color: var(--bg-clr);
+  position: relative;
   &__title {
     font-size: 1.5rem;
     display: flex;
@@ -98,6 +116,13 @@ section.info {
   &__text {
     margin-block: 0.875rem;
     margin-left: 2.5rem;
+  }
+  .some-btn {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
   }
 }
 
@@ -368,5 +393,126 @@ hr {
     background: transparent;
     border: none;
     cursor: pointer;
+  }
+}
+
+@media (width<=1024px) {
+  section.trigger,
+  section.action,
+  .arrow {
+    width: 100%;
+  }
+  .trigger__card {
+    width: calc((100% - var(--container-padding)) / 2);
+  }
+}
+
+@media screen and (width<=475px) {
+  .main {
+    background-size: 60%;
+    background-position-y: -40px;
+    .wallet {
+      display: flex;
+    }
+  }
+  section.info {
+    .card {
+      border: none;
+      background-color: transparent;
+      padding: 0;
+      &__body {
+        margin-top: 0.5rem;
+        .bar {
+          display: none;
+        }
+        .progress__value_active {
+          color: var(--primary-clr);
+          font-weight: 600;
+        }
+      }
+    }
+  }
+  section.trigger,
+  section.action {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    margin-block: 1.5rem;
+    .some-btn {
+      display: block;
+    }
+  }
+  .trigger {
+    &__body {
+      gap: calc(100% - (100% - var(--container-padding)));
+      row-gap: 0.625rem;
+    }
+    &__card {
+      padding: 0.625rem 1rem;
+      &_title {
+        h4 {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+      &_body {
+        color: var(--primary-clr);
+      }
+      &.open {
+        .trigger__card {
+          &_title {
+            h4 {
+              flex-direction: row;
+              align-items: center;
+            }
+          }
+          &_btns{
+            .test-button{
+              display: none;
+            }
+          }
+          &_body{
+            color: var(--text-clr);
+            .field-wrapper{
+              input, .big-select{
+                width: 100%;
+              }
+              .inputs-wrapper{
+                flex-direction: column;
+                .select{
+                  padding-block: .75rem;
+                }
+                .input-wrapper{
+                  max-width: none;
+                }
+              }
+            }
+            button{
+              position: relative;
+              padding-block: 1rem;
+              justify-content: center;
+              font-size: 1rem;
+            }
+          }
+        }
+      }
+    }
+  }
+  .submit-wrapper {
+    width: 100%;
+    flex-direction: column;
+    background-color: transparent;
+    padding: 1.25rem;
+    gap: 0.625rem;
+    .submit-input {
+      width: 100%;
+    }
+    & > * {
+      width: 100%;
+    }
+    .btn {
+      justify-content: center;
+      padding-block: 0.75rem;
+    }
   }
 }

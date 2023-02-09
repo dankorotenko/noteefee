@@ -4,6 +4,8 @@ import { BsArrowDown } from "react-icons/bs";
 
 import InfoCard from "../components/InfoCard";
 import Triggers from "../components/Triggers";
+import Wallet from "../components/icons/Wallet";
+import Bell from '../components/icons/Bell'
 
 import bolt from "../assets/bolt.svg";
 import bell from "../assets/bell.svg";
@@ -12,9 +14,15 @@ export default function Home() {
   const [trigger, setTrigger] = useState(null);
   const handleChildProps = (childProps) => {
     setTrigger(childProps);
-  }
+  };
   return (
     <main className={`main container ${trigger && trigger.trigger}`}>
+      <div className="wallet">
+        <Wallet />
+        <p className="wallet__id">
+          0xafb6e14fe47d850fd0a7395bcfb997ffacf4715e0f895cc162c218e4a7564bc6
+        </p>
+      </div>
       <section className="info">
         <InfoCard title="Active Notifications" percent={1} max={3} />
         <InfoCard
@@ -29,7 +37,8 @@ export default function Home() {
           <img src={bolt} /> Trigger
         </h3>
         <p className="trigger__text">When this happens...</p>
-        <Triggers handleChildProps={handleChildProps}/>
+        <Triggers handleChildProps={handleChildProps} />
+        <div className="some-btn"><Bell /></div>
       </section>
 
       <div className="arrow">
@@ -42,11 +51,12 @@ export default function Home() {
         </h3>
         <p className="action__text">Then do this...</p>
         <button className="btn bordered">Create Action</button>
+        <div className="some-btn"><Bell /></div>
       </section>
       <hr />
       <div className="submit-wrapper">
         <input type="text" className="submit-input" placeholder="Name" />
-        <button className="submit-button">Save Notification</button>
+        <button className="btn filled submit-button">Save Notification</button>
       </div>
     </main>
   );
