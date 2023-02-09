@@ -117,7 +117,7 @@ section.info {
     margin-block: 0.875rem;
     margin-left: 2.5rem;
   }
-  .some-btn{
+  .some-btn {
     display: none;
     position: absolute;
     top: 0;
@@ -438,7 +438,7 @@ hr {
     background-color: transparent;
     padding: 0;
     margin-block: 1.5rem;
-    .some-btn{
+    .some-btn {
       display: block;
     }
   }
@@ -457,6 +457,44 @@ hr {
       }
       &_body {
         color: var(--primary-clr);
+      }
+      &.open {
+        .trigger__card {
+          &_title {
+            h4 {
+              flex-direction: row;
+              align-items: center;
+            }
+          }
+          &_btns{
+            .test-button{
+              display: none;
+            }
+          }
+          &_body{
+            color: var(--text-clr);
+            .field-wrapper{
+              input, .big-select{
+                width: 100%;
+              }
+              .inputs-wrapper{
+                flex-direction: column;
+                .select{
+                  padding-block: .75rem;
+                }
+                .input-wrapper{
+                  max-width: none;
+                }
+              }
+            }
+            button{
+              position: relative;
+              padding-block: 1rem;
+              justify-content: center;
+              font-size: 1rem;
+            }
+          }
+        }
       }
     }
   }
