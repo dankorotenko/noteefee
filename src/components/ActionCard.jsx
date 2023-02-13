@@ -6,7 +6,7 @@ import Modal from "./Modal";
 
 import { MdClose } from "react-icons/md";
 import collection from "../assets/collection.png";
-export default function TriggerCard({
+export default function ActionCard({
   card,
   open,
   isOpen,
@@ -17,7 +17,7 @@ export default function TriggerCard({
   const ref = useRef();
   const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState({
-    userAddress: "",
+    discordUrl: "",
     thresholdAmount: "",
     type: "Below",
     aptosPrice: "",
@@ -127,40 +127,18 @@ export default function TriggerCard({
       <div className={`cards-container__card_body ${isOpen ? "opened" : ""}`}>
         {isOpen && open == 0 && (
           <>
-            <div className="field-wrapper user-address">
-              <label htmlFor="user-address">User Address</label>
+            <div className="field-wrapper discord-url">
+              <label htmlFor="discord-url">Discord Webhook URL</label>
               <input
                 type="text"
-                placeholder="0*123456789..."
-                id="user-address"
-                name="userAddress"
+                placeholder="http:// discord.com/api/webhooks/..."
+                id="discordd-url"
+                name="discordUrl"
                 onChange={handleChange}
                 value={formData.userAddress}
               />
-              <p className="tip">Enter the address that you use on Compount</p>
             </div>
-            <div className="field-wrapper threshold-amound">
-              <label htmlFor="threshold-amound">Threshold Amound</label>
-              <div className="inputs-wrapper">
-                <Select
-                  className={"select"}
-                  options={["Below", "Above", "Equal to"]}
-                  value={formData.type}
-                  handleSelectProps={handleSelectProps}
-                />
-                <div className="input-wrapper">
-                  <input
-                    type="number"
-                    placeholder="0.00"
-                    id="threshold-amound"
-                    name="thresholdAmount"
-                    onChange={handleChange}
-                    value={formData.thresholdAmount}
-                  />
-                  <p>USD</p>
-                </div>
-              </div>
-            </div>
+            <div className=""></div>
             <button
               className="btn bordered test-button--mobile"
               onClick={() => setShowModal(true)}

@@ -1,28 +1,28 @@
 import React, { useEffect, useState } from "react";
 
-import { triggers } from '../data/dummy'
+import { actions } from '../data/dummy'
 
-import TriggerCard from "./TriggerCard";
+import ActionCard from "./ActionCard";
 
-export default function Triggers({ handleChildProps }) {
+export default function Actions({ handleChildProps }) {
   const [open, setOpen] = useState(null);
   const [closeCard, setCloseCard] = useState(null);
 
 
   const handleOpen = (i) => {
     setOpen(i);
-    handleChildProps({ trigger: triggers[0].title.toLowerCase() });
+    // handleChildProps({ trigger: triggers[0].title.toLowerCase() });
   };
 
   useEffect(() => {
     setOpen(null);
-    handleChildProps({ trigger: null });
+    // handleChildProps({ trigger: null });
   }, [closeCard]);
 
   return (
     <div className="cards-container__body">
-      {triggers.map((card, i) => (
-        <TriggerCard
+      {actions.map((card, i) => (
+        <ActionCard
           card={card}
           open={open}
           key={i}

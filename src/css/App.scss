@@ -126,7 +126,7 @@ section.info {
   }
 }
 
-.trigger {
+.cards-container {
   &__body {
     /* display: grid; */
     /* grid-template-columns: repeat(auto-fit, minmax(330px, 330px)); */
@@ -154,6 +154,9 @@ section.info {
       &:hover {
         box-shadow: none;
         cursor: default;
+      }
+      .test-button--mobile {
+        display: none;
       }
     }
     &.closed {
@@ -204,13 +207,18 @@ section.info {
             width: 60%;
           }
           .tip {
-            font-size: 0.625rem;
+            font-size: 0.75rem;
             color: var(--green-clr);
           }
           .topaz-tip {
             line-height: 1.5rem;
             a {
               font-weight: 600;
+            }
+            span {
+              font-weight: 600;
+              color: var(--primary-clr);
+              word-wrap: break-word;
             }
           }
           &.threshold-amound {
@@ -402,7 +410,7 @@ hr {
   .arrow {
     width: 100%;
   }
-  .trigger__card {
+  .cards-container__card {
     width: calc((100% - var(--container-padding)) / 2);
   }
 }
@@ -442,10 +450,13 @@ hr {
       display: block;
     }
   }
-  .trigger {
+  .cards-container {
     &__body {
       gap: calc(100% - (100% - var(--container-padding)));
       row-gap: 0.625rem;
+    }
+    &__text {
+      margin-top: 0.5rem;
     }
     &__card {
       padding: 0.625rem 1rem;
@@ -455,39 +466,52 @@ hr {
           align-items: flex-start;
         }
       }
+      &_desc {
+        font-weight: 500;
+      }
       &_body {
         color: var(--primary-clr);
       }
       &.open {
-        .trigger__card {
+        .cards-container__card {
           &_title {
             h4 {
               flex-direction: row;
               align-items: center;
             }
           }
-          &_btns{
-            .test-button{
+          &_btns {
+            .test-button {
               display: none;
             }
           }
-          &_body{
+          &_body {
             color: var(--text-clr);
-            .field-wrapper{
-              input, .big-select{
+            .test-button--mobile {
+              display: block;
+            }
+            .field-wrapper {
+              label {
+                margin-bottom: 0.375rem;
+              }
+              input,
+              .big-select {
                 width: 100%;
               }
-              .inputs-wrapper{
+              .inputs-wrapper {
                 flex-direction: column;
-                .select{
-                  padding-block: .75rem;
+                .select {
+                  padding-block: 0.75rem;
                 }
-                .input-wrapper{
+                .input-wrapper {
                   max-width: none;
                 }
               }
+              .topaz-tip {
+                line-height: 1.2rem;
+              }
             }
-            button{
+            button {
               position: relative;
               padding-block: 1rem;
               justify-content: center;

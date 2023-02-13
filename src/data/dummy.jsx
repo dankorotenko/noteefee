@@ -2,6 +2,9 @@ import Telegram from "../components/icons/logos/Telegram";
 import Aptos from "../components/icons/logos/Aptos";
 import Discord from "../components/icons/logos/Discord";
 import Slack from "../components/icons/logos/Slack";
+import Email from "../components/icons/logos/Email";
+import Twitter from "../components/icons/logos/Twitter";
+import Webhook from "../components/icons/logos/Webhook";
 import Account from "../components/icons/logos/Account";
 import Wallet from '../components/icons/logos/Account'
 import Topaz from "../components/icons/logos/Topaz";
@@ -160,7 +163,7 @@ export const notifications = [
   },
 ];
 
-export const cards = [
+export const triggers = [
   {
     title: "Account",
     desc: "Track Account Liquidity",
@@ -180,5 +183,38 @@ export const cards = [
     title: "Topaz",
     desc: "Track NFT floor price",
     img: <Topaz />,
+  },
+];
+
+export const actions = [
+  {
+    title: "Discord",
+    desc: "Post a message",
+    img: <Discord />,
+  },
+  {
+    title: "Slack",
+    desc: "Post a message",
+    img: <Slack />,
+  },
+  {
+    title: "Email",
+    desc: "Send an email",
+    img: <Email />,
+  },
+  {
+    title: "Telegram",
+    desc: "Send a message",
+    img: <Telegram />,
+  },
+  {
+    title: "Twitter",
+    desc: "Post a tweet",
+    img: <Twitter />,
+  },
+  {
+    title: "Webhook",
+    desc: "Send a POST request",
+    img: <Webhook />,
   },
 ];

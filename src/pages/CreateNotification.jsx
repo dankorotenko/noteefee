@@ -4,6 +4,7 @@ import { BsArrowDown } from "react-icons/bs";
 
 import InfoCard from "../components/InfoCard";
 import Triggers from "../components/Triggers";
+import Actions from "../components/Actions";
 import Wallet from "../components/icons/Wallet";
 import Bell from '../components/icons/Bell'
 
@@ -50,7 +51,8 @@ export default function Home() {
           <img src={bell} /> Action
         </h3>
         <p className="action__text">Then do this...</p>
-        <button className="btn bordered">Create Action</button>
+        {/* <button className="btn bordered">Create Action</button> */}
+        <Actions />
         <div className="some-btn"><Bell /></div>
       </section>
       <hr />
