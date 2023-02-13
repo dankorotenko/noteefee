@@ -404,7 +404,7 @@ hr {
   }
 }
 
-@media (width<=1024px) {
+@media (max-width: 1024px) {
   section.trigger,
   section.action,
   .arrow {
@@ -415,7 +415,7 @@ hr {
   }
 }
 
-@media screen and (width<=475px) {
+@media screen and (max-width: 475px) {
   .main {
     background-size: 60%;
     background-position-y: -40px;
