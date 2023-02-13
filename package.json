@@ -8,7 +8,7 @@
     "build": "vite build",
     "preview": "vite preview"
   },
-  "homepage": "https://aptools.io/notifications/",
+  "homepage": "/noteefee/",
   "dependencies": {
     "antd": "^5.1.7",
     "moment": "^2.29.4",
